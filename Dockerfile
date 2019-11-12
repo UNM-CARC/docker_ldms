@@ -27,9 +27,9 @@ RUN mkdir /opt/ldms; \
     cd build; \
     ../configure --enable-rabbitkw \
                  --enable-openmpi \
-                 --prefix=/usr/local;
+                 --prefix=/usr/local; \
     make -j; \
-    make -j install; \
+    make -j install;
 
 # Copy LDMS config and startup scripts to accessible location
 RUN mkdir /opt/ldms_wheeler/;
