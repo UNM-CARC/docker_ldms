@@ -39,5 +39,12 @@ COPY ldms_configs/sampler_template.conf /opt/ldms_wheeler/
 COPY ldms_configs/start_agg_csv_template.sh /opt/ldms_wheeler/
 COPY ldms_configs/start_sampler.sh /opt/ldms_wheeler/
 
+# Common workdir for all layers of reproducible infrastructure
+WORKDIR /home/docker
+# Entrypoint and commands script lefted from parent Docker image,
+# extended for this image layer.
+COPY entrypoint.sh commands.sh ./
+RUN chmod +x /home/docker/entrypoint.sh /home/docker/commands.sh
+
 ENTRYPOINT ["/bin/bash", "-l", "/home/docker/entrypoint.sh"]
 CMD ["docker-shell"]
