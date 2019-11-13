@@ -26,16 +26,18 @@ RUN mkdir /opt/ldms; \
     mkdir build; \
     cd build; \
     ../configure --enable-rabbitkw \
-                 --enable-openmpi \
+                 --enable-mpi_sampler \
                  --prefix=/usr/local; \
     make -j; \
     make -j install;
 
 # Copy LDMS config and startup scripts to accessible location
 RUN mkdir /opt/ldms_wheeler/;
-COPY ldms_configs/aggregator_csv.conf \
-     ldms_configs/ldmsauth.conf \
-     ldms_configs/sampler_template.conf \
-     ldms_configs/start_agg_csv_template.sh \
-     ldms_configs/start_sampler.sh /opt/ldms_wheeler;
+COPY ldms_configs/aggregator_csv.conf /opt/ldms_wheeler/
+COPY ldms_configs/ldmsauth.conf /opt/ldms_wheeler/
+COPY ldms_configs/sampler_template.conf /opt/ldms_wheeler/
+COPY ldms_configs/start_agg_csv_template.sh /opt/ldms_wheeler/
+COPY ldms_configs/start_sampler.sh /opt/ldms_wheeler/
 
+ENTRYPOINT ["/bin/bash", "-l", "/home/docker/entrypoint.sh"]
+CMD ["docker-shell"]
