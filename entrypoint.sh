@@ -9,6 +9,7 @@ export INCLUDE=/usr/local/include:${INCLUDE}
 export SHARE=/usr/local/share:${SHARE}
 export MANPATH=${SHARE}/man
 export ZAP_LIBPATH=/usr/local/lib:/usr/local/lib/ovis-lib
+export LDMS_AUTH_FILE=/opt/ldms_wheeler/ldmsauth.conf
 
 if [ "$1" '=' 'docker-shell' ] ; then
     if [ -t 0 ] ; then
