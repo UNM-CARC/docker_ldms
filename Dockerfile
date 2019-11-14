@@ -3,7 +3,7 @@
 
 # This Dockerfile is based off of https://github.com/UNM-CARC/bsp_prototype/blob/master/Dockerfile.
 
-ARG DOCKER_TAG=latest
+ARG DOCKER_TAG=carc-wheeler
 ARG BASE_IMAGE=unmcarc/docker_base:${DOCKER_TAG}
 FROM ${BASE_IMAGE}
 
@@ -33,11 +33,7 @@ RUN mkdir /opt/ldms; \
 
 # Copy LDMS config and startup scripts to accessible location
 RUN mkdir /opt/ldms_wheeler/;
-COPY ldms_configs/aggregator_csv.conf /opt/ldms_wheeler/
-COPY ldms_configs/ldmsauth.conf /opt/ldms_wheeler/
-COPY ldms_configs/sampler_template.conf /opt/ldms_wheeler/
-COPY ldms_configs/start_agg_csv_template.sh /opt/ldms_wheeler/
-COPY ldms_configs/start_sampler.sh /opt/ldms_wheeler/
+COPY ldms_configs/* /opt/ldms_wheeler/
 
 # Common workdir for all layers of reproducible infrastructure
 WORKDIR /home/docker
