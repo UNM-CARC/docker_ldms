@@ -15,7 +15,7 @@ export ZAP_LIBPATH=/usr/local/lib:/usr/local/lib/ovis-lib
 
 export LDMS_AUTH_FILE=/opt/ldms_wheeler/ldmsauth.conf
 
-sed "s/<hostname>/$(hostname)/g" < /opt/ldms_wheeler/sampler_template.conf > /dev/shm/sampler.conf
+sed "s/<hostname>/$(cat /etc/hostname)/g" < /opt/ldms_wheeler/sampler_template.conf > /dev/shm/sampler.conf
 
 ldmsd -a ovis -A conf=${LDMS_AUTH_FILE} -m 1MB -x sock:10002 -l sampled_$(whoami).log -s sampled_$(whoami).sock -r sampled_$(whoami).pid -c /dev/shm/sampler.conf -v DEBUG
 
