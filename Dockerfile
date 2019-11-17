@@ -4,7 +4,7 @@
 # This Dockerfile is based off of https://github.com/UNM-CARC/bsp_prototype/blob/master/Dockerfile.
 
 ARG DOCKER_TAG=carc-wheeler
-ARG BASE_IMAGE=unmcarc/docker_base:${DOCKER_TAG}
+ARG BASE_IMAGE=qwofford/docker_base:${DOCKER_TAG}
 FROM ${BASE_IMAGE}
 
 # Because we use spack and a cleaned environment, the run commands here
