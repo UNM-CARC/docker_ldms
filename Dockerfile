@@ -34,7 +34,7 @@ RUN mkdir /opt/ldms; \
 # Copy LDMS config and startup scripts to accessible location
 RUN mkdir /opt/ldms_wheeler/;
 COPY ldms_configs/* /opt/ldms_wheeler/
-
+RUN chmod 400 /opt/ldms_wheeler/ ldmsauth.conf
 # Common workdir for all layers of reproducible infrastructure
 WORKDIR /home/docker
 # Entrypoint and commands script lefted from parent Docker image,
