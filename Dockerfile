@@ -35,12 +35,3 @@ RUN mkdir /opt/ldms; \
 RUN mkdir /opt/ldms_wheeler/;
 COPY ldms_configs/* /opt/ldms_wheeler/
 RUN chmod 400 /opt/ldms_wheeler/ldmsauth.conf
-# Common workdir for all layers of reproducible infrastructure
-WORKDIR /home/docker
-# Entrypoint and commands script lefted from parent Docker image,
-# extended for this image layer.
-COPY entrypoint.sh commands.sh ./
-RUN chmod +x /home/docker/entrypoint.sh /home/docker/commands.sh
-
-ENTRYPOINT ["/bin/bash", "-l", "/home/docker/entrypoint.sh"]
-CMD ["docker-shell"]
