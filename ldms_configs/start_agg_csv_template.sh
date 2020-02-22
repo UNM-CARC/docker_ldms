@@ -1,5 +1,7 @@
 #!/bin/bash -l
 
+source /home/docker/env.sh
+
 USER=$(whoami)
 cat /opt/ldms_wheeler/aggregator_csv.conf | sed "s/<USERNAME>/${USER}/" > /dev/shm/agg_${USER}.conf;
 export LDMS_AUTH_FILE=/opt/ldms_wheeler/ldmsauth.conf;
